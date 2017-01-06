@@ -12,21 +12,16 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriInfo;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.jboss.resteasy.annotations.cache.NoCache;
 
-import javax.ws.rs.core.UriInfo;
-
 import config.ConfigProperties;
 import enums.Triangle;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import service.ServiceFunctions;
 
-@Path("/functions")
-@Api( value = "/api")
+@Path("")
 @RequestScoped
 public class RestResources {
 
@@ -40,14 +35,8 @@ public class RestResources {
 	private static final String RESOURCE_NOT_FOUND = "resource_not_found"; 
 
 	@GET
-	@Path("/fibonacci")
+	@Path("/{fibonacci : (?i)fibonacci}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@ApiOperation( 
-		    value = "Calculates the n-th element of the Fibonacci sequence", 
-		    notes = "List all people using paging", 
-		    response = Long.class 
-		    )
-	@ApiParam( value = "Page to fetch", required = true )
 	@NoCache
 	public Response getFibonacciOf(@Context UriInfo info) {
 		boolean isMinus = false;
@@ -78,7 +67,7 @@ public class RestResources {
 	}
 
 	@GET
-	@Path("/token")
+	@Path("/{token : (?i)token}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@NoCache
 	public Response token() {
@@ -86,7 +75,7 @@ public class RestResources {
 	}
 
 	@GET
-	@Path("/reverseWords")
+	@Path("/{reverseWords : (?i)reverseWords}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@NoCache
 	public Response reverseSentence(@Context UriInfo info) {
@@ -105,7 +94,7 @@ public class RestResources {
 	}
 
 	@GET
-	@Path("/triangleType")
+	@Path("/{triangleType : (?i)triangleType}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@NoCache
 	public Response triangleType(@Context UriInfo info) {

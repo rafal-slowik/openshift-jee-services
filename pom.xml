@@ -117,32 +117,6 @@
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
 		</dependency>
-
-		<!-- swagger api doc -->
-		<!-- https://mvnrepository.com/artifact/io.swagger/swagger-annotations -->
-		<dependency>
-			<groupId>io.swagger</groupId>
-			<artifactId>swagger-annotations</artifactId>
-			<version>1.5.0</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/io.swagger/swagger-jaxrs -->
-		<dependency>
-			<groupId>io.swagger</groupId>
-			<artifactId>swagger-jaxrs</artifactId>
-			<version>1.5.0</version>
-		</dependency>
-
-		<!-- Import the Servlet API, we use provided scope as the API is included 
-			in JBoss WildFly -->
-		<dependency>
-			<groupId>org.jboss.spec.javax.servlet</groupId>
-			<artifactId>jboss-servlet-api_3.1_spec</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- <dependency> <groupId>org.wildfly.swarm</groupId> <artifactId>swagger</artifactId> 
-			<scope>compile</scope> <version>2016.12.1</version> </dependency> -->
 	</dependencies>
 
 	<build>
