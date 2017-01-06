@@ -49,7 +49,7 @@ public class RestResources {
 			return createBadRequestResponse(message).build();
 		}
 		try {
-			n = Long.parseLong(temporaryVar.trim());
+			n = Long.parseLong(temporaryVar == null ? temporaryVar : temporaryVar.trim());
 			isMinus = n < 0;
 			n = Math.abs(n);
 		} catch (NumberFormatException e) {
