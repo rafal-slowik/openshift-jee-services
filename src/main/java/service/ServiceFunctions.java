@@ -23,7 +23,9 @@ public class ServiceFunctions implements Serializable {
 	 * 
 	 * @param sentence
 	 *            - must not be <code>null</code>
-	 * @return reversed sentence
+	 * @return reversed sentence <br>
+	 * @throws IllegalArgumentException
+	 *             when the sentence is <code>null</code>
 	 */
 	public StringBuilder reverseSentence(String sentence) {
 		if (sentence == null) {
@@ -54,7 +56,9 @@ public class ServiceFunctions implements Serializable {
 	 * @param n
 	 *            - what element of the Fibonacci sequence should be calculated
 	 *            .
-	 * @return value of n-th element of Fibonacci sequence
+	 * @return value of n-th element of Fibonacci sequence <br>
+	 * @throws IllegalArgumentException
+	 *             when the parameter is greater than 92 or less than 0
 	 */
 	public long getFibonacciOf(long n) {
 		if (n > 92 || n < 0) {
