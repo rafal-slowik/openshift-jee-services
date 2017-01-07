@@ -36,6 +36,9 @@
 		<version.surefire.plugin>2.16</version.surefire.plugin>
 		<version.war.plugin>2.5</version.war.plugin>
 
+		<!-- other plugin versions -->
+		<version.common.lang>2.6</version.common.lang>
+
 		<!-- maven-compiler-plugin -->
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven.compiler.source>1.7</maven.compiler.source>
@@ -70,9 +73,6 @@
 			<artifactId>cdi-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
-		<!-- First declare the APIs we depend on and need for compilation. All 
-			of them are provided by JBoss WildFly -->
 
 		<!-- Import the Common Annotations API (JSR-250), we use provided scope 
 			as the API is included in JBoss WildFly -->
@@ -115,8 +115,9 @@
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
+			<version>${version.common.lang}</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -160,6 +161,25 @@
 						<version>${version.surefire.plugin}</version>
 						<configuration>
 							<skip>true</skip>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<!-- The default profile skips all tests, though you can tune it to run 
+				just unit tests based on a custom pattern -->
+			<!-- Separate profiles are provided for running all tests, including Arquillian 
+				tests that execute in the specified container -->
+			<id>full</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>${version.surefire.plugin}</version>
+						<configuration>
+							<skip>false</skip>
 						</configuration>
 					</plugin>
 				</plugins>

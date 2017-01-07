@@ -4,12 +4,31 @@ import java.io.Serializable;
 
 import javax.enterprise.context.ApplicationScoped;
 
+import java.lang.IllegalArgumentException;
+
+/**
+ * Service contains the functions which are used by restful service.
+ * 
+ * @author Rafal Slowik, rafal2308@gmail.com
+ *
+ */
 @ApplicationScoped
 public class ServiceFunctions implements Serializable {
 
 	private static final long serialVersionUID = -2518438330053513663L;
 
+	/**
+	 * Reverse the letters for each word of the sentence without changing the
+	 * order of the sentence.
+	 * 
+	 * @param sentence
+	 *            - must not be <code>null</code>
+	 * @return reversed sentence
+	 */
 	public StringBuilder reverseSentence(String sentence) {
+		if (sentence == null) {
+			throw new IllegalArgumentException("Parameter must not be null!");
+		}
 		StringBuilder sb = new StringBuilder();
 		String[] words = sentence.split(" ");
 
@@ -26,14 +45,25 @@ public class ServiceFunctions implements Serializable {
 		return sb;
 	}
 
-	public void reverseWord(String s, StringBuilder sb) {
-		for (int j = s.length() - 1; j >= 0; j--) {
-			char c = s.charAt(j);
-			sb.append(c);
-		}
-	}
-
+	/**
+	 * Calculate the n-th element of Fibonacci sequence. The parameter value
+	 * should be in range between <b>0 and 92</b>, otherwise the
+	 * <code>long</code> type range will be exceeded and the result will be
+	 * incorrect.
+	 * 
+	 * @param n
+	 *            - what element of the Fibonacci sequence should be calculated
+	 *            .
+	 * @return value of n-th element of Fibonacci sequence
+	 */
 	public long getFibonacciOf(long n) {
+		if (n > 92 || n < 0) {
+			StringBuilder sb = new StringBuilder(
+					"Parameter must be in range 0 (inclusive) and 92 (inclusive) but was ");
+			sb.append(n);
+			throw new IllegalArgumentException(sb.toString());
+		}
+
 		long a, b, c;
 		if (n < 2)
 			return n;
@@ -43,5 +73,12 @@ public class ServiceFunctions implements Serializable {
 			b = c;
 		}
 		return b;
+	}
+
+	private void reverseWord(String s, StringBuilder sb) {
+		for (int j = s.length() - 1; j >= 0; j--) {
+			char c = s.charAt(j);
+			sb.append(c);
+		}
 	}
 }

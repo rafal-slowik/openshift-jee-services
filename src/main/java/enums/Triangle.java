@@ -1,15 +1,27 @@
 package enums;
 
+/**
+ * Contains three following triangles' types: <br>
+ * <li><b>EQUILATERAL</b></li>
+ * <li><b>ISOSCELES</b></li>
+ * <li><b>SCALENE</b></li>
+ * and to simplify an additional type <br>
+ * <li><b>NOT_EXISTING</b></li>
+ * 
+ * <br>
+ * @author rafal slowik
+ *
+ */
 public enum Triangle {
 	NOT_EXISTING("error") {
 		@Override
 		public boolean isCurrentType(long a, long b, long c) {
 			boolean existCurrentType = false;
 			// non-negatives or zeroes
-			if(a <= 0 || b <= 0 || c <= 0) {
-				existCurrentType = true; 
+			if (a <= 0 || b <= 0 || c <= 0) {
+				existCurrentType = true;
 			} else if ((a + b <= c) || (a + c <= b) || (b + c <= a)) {
-				existCurrentType = true; 
+				existCurrentType = true;
 			}
 			return existCurrentType;
 		}
@@ -49,8 +61,9 @@ public enum Triangle {
 	public abstract boolean isCurrentType(long a, long b, long c);
 
 	public static Triangle getTriangleType(long a, long b, long c) {
-		// important - get values ordinal because as first we have to check NOT_EXISTING conditions
-		
+		// important - get values ordinal because as first we have to check
+		// NOT_EXISTING conditions
+
 		for (Triangle triangle : Triangle.values()) {
 			if (triangle.isCurrentType(a, b, c)) {
 				return triangle;
