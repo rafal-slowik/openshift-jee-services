@@ -11,6 +11,7 @@ How to build project:
 <b>mvn clean install -P full</b><br/>
 </li>
 
+<b>The project uses CDI (Weld implementation) container and was tested and deployed to Wildfly 10 Application Server</b><br>
 <b>The unit tests use Mockito as well as JUnit frameworks</b>
 
 
