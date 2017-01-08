@@ -20,7 +20,9 @@ public enum Triangle {
 			// non-negatives or zeroes
 			if (a <= 0 || b <= 0 || c <= 0) {
 				existCurrentType = true;
-			} else if ((a + b <= c) || (a + c <= b) || (b + c <= a)) {
+			} 
+			
+			if ((a + b <= c) || (a + c <= b) || (b + c <= a)) {
 				existCurrentType = true;
 			}
 			return existCurrentType;
@@ -28,23 +30,23 @@ public enum Triangle {
 	}, //
 	EQUILATERAL("equilateral") {
 		@Override
-		// two sides same length
+		// all same 
 		public boolean isCurrentType(long a, long b, long c) {
-			return (a == b && a == c);
+			return a == b && a == c;
 		}
 	}, //
 	ISOSCELES("isosceles") {
 		@Override
 		public boolean isCurrentType(long a, long b, long c) {
-			// all same
-			return (a == b || a == c || b == c);
+			// two sides same length
+			return a == b || a == c || b == c;
 		}
 	}, //
 	SCALENE("scalene") {
 		@Override
 		public boolean isCurrentType(long a, long b, long c) {
 			// all different
-			return (a != b && a != c && b != c);
+			return a != b && a != c && b != c;
 		}
 	};
 

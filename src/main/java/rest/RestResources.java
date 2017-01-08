@@ -42,10 +42,10 @@ public class RestResources {
 	private ServiceFunctions service;
 
 	/* constants */
-	private static final String INVALID_REQUEST = "invalid_request";
-	private static final String RESOURCE_NOT_FOUND = "resource_not_found";
-	private static final int MAX_NUMBER_OF_CHARACTERS = 1655;
-	private static final int MAX_NUMBER_OF_FIBONACCI = 92;
+	public static final String INVALID_REQUEST = "invalid_request";
+	public static final String RESOURCE_NOT_FOUND = "resource_not_found";
+	public static final int MAX_NUMBER_OF_CHARACTERS = 1655;
+	public static final int MAX_NUMBER_OF_FIBONACCI = 92;
 
 	/**
 	 * The service calculates the n-th number of Fibonacci sequence. Only query
@@ -72,7 +72,7 @@ public class RestResources {
 		}
 		try {
 			n = Long.parseLong(StringUtils.trim(temporaryVar));
-			multiplayer = n < 0 ? (long) Math.pow(-1, n + 1) : 1;
+			multiplayer = n < 0 ? (long) Math.pow(-1, (long)(n + 1)) : 1;
 			n = Math.abs(n);
 		} catch (NumberFormatException e) {
 			return createResponseWithMessage(Status.BAD_REQUEST, properties.findByKey(INVALID_REQUEST)).build();
@@ -140,7 +140,9 @@ public class RestResources {
 	@NoCache
 	public Response triangleType(@Context UriInfo info) {
 
-		long a, b, c;
+		long a;
+		long b;
+		long c;
 
 		String strA = info.getQueryParameters().getFirst("a");
 		String strB = info.getQueryParameters().getFirst("b");

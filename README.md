@@ -11,4 +11,8 @@ How to build project:
 <b>mvn clean install -P full</b><br/>
 </li>
 
+<b>The unit tests use Mockito as well as JUnit frameworks</b>
+
+
+
 

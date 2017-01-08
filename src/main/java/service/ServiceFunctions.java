@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import java.lang.IllegalArgumentException;
-
 /**
  * Service contains the functions which are used by restful service.
  * 
@@ -61,17 +59,20 @@ public class ServiceFunctions implements Serializable {
 	 *             when the parameter is greater than 92 or less than 0
 	 */
 	public long getFibonacciOf(long n) {
-		if (n > 92 || n < 0) {
+		long elementToFind = n;
+		if (elementToFind > 92 || elementToFind < 0) {
 			StringBuilder sb = new StringBuilder(
 					"Parameter must be in range 0 (inclusive) and 92 (inclusive) but was ");
-			sb.append(n);
+			sb.append(elementToFind);
 			throw new IllegalArgumentException(sb.toString());
 		}
 
-		long a, b, c;
-		if (n < 2)
-			return n;
-		for (a = 0, b = 1; n > 1; n--) {
+		long a;
+		long b;
+		long c;
+		if (elementToFind < 2)
+			return elementToFind;
+		for (a = 0, b = 1; elementToFind > 1; elementToFind--) {
 			c = a + b;
 			a = b;
 			b = c;
